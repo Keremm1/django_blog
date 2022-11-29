@@ -1,0 +1,47 @@
+<nav class="navbar navbar-dark" style="background-color: #581845;">
+  <a class="navbar-brand" href="{% url 'index'%}" style="color:rgb(0, 0, 0);"><h2>𝕏Article</h2></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'index' %}" style="color:{{request.user.last_name}};">{% if request.user.username %} {{request.user.username}}'s {% endif %}Home <span class="sr-only">(current)</span></a>
+      </li>
+      {% if not request.user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{%url 'user:register'%}">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{%url 'user:login'%}">Login</a>
+      </li>
+      {% endif %}
+      <li class="nav-item dropdown">
+        <a type="button" href="{%url 'article:dashboard'%}" class="btn btn-outline-warning">Go to dashboard</a>
+        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dash Board of Article 
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{%url 'article:dashboard'%}">Go to Dashboard</a>
+          <a class="dropdown-item" href="{%url 'article:createarticle'%}">Create Article</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" style="background-color: red;" href="{%url 'article:dashboard'%}">Delete articles</a>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link disabled" href="{%url 'article:articles'%}">Search others Article</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{%url 'about' %}">About Us <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{%url 'user:logout'%}">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">by kerem</a>
+        </li>
+      </ul>
+  </div>
+</nav>

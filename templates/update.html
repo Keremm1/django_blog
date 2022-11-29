@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% load crispy_forms_tags %}
+
+<form class="col-md-6 offset-md-3" method="post" enctype="multipart/form-data">
+<br>
+<h1>Makale Güncelle</h1>
+<hr>
+    {% csrf_token %}
+    {{form.media}}
+    {{form|crispy}}
+    <br>
+    <button type="submit" class="btn btn-danger">Güncelle</button>
+</form>
+
+
+{% endblock body %}

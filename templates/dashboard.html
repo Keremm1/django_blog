@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<body style="background-color: #444444;">
+  <div class="container">
+  <br>
+    <h3 style="color:aquamarine;">Kontrol Paneli</h3>
+<hr>
+<p style="color:brown;">Hoşgeldiniz <b style="color:{{request.user.last_name}};">{{request.user.username}}</b></p>
+<hr>
+<a class="btn btn-danger" href="{% url 'article:createarticle'%}">Makale Ekle</a>
+<hr>
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Author</th>
+        <th scope="col">title</th>
+        <th scope="col">Date</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+       {% if articles %}
+        {% for article in articles %}
+        <tr>
+          <th scope="row">{{article.id}}</th>
+          <td> <a style="color:{{request.user.last_name}};" href="/user/{{article.author.username}}">{{article.author.username}}</a></td>
+          <td><a href="{%url 'article:article' article.id %}">{{article.title}}</a></td>
+          <td>{{article.created_date}}</td>
+          <td><a href="{%url 'article:update' article.id %}" class="btn btn-danger">Update</a></td>
+          <td><a href="{%url 'article:delete' article.id %}" class="btn btn-danger">Delete</a></td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr><td><div class="container"><a class="btn btn-danger">You don't have an article to view</a></div></td></tr>
+        {% endif %}
+    </tbody>
+  </table>
+</div>
+{% endblock body %}

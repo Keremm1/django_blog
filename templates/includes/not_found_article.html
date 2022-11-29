@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+
+  <meta charset="UTF-8">
+  <title>Not Found PAGE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  
+      <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+  
+</head>
+ <body>
+    
+
+<div id="app">
+   {% block Message %} 
+   <div>Article Not Found</div>
+    <div class="txt">
+    Hey Try Again for Search<span class="blink">_</span>
+    </div>
+    {% endblock Message %}
+ </div>
+</body>
+</html>

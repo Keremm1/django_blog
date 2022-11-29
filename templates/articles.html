@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+
+
+
+{% block body %}
+<body style="background-color: #444444;">
+{% if articles %}
+
+<div class="container" style="margin-top: 100px; margin-bottom:50px;">
+
+    <h2 style="color:darkmagenta;">All Articles</h2>
+<hr>
+<form >
+  {% csrf_token %}
+<div class="input-group" style="width: 300px;">
+ 
+  <input name="keyword" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+  <button type="submit" class="btn btn-outline-primary">search</button>
+
+</div>
+</form>
+<hr>
+<div id="accordion">
+    
+    <div class="card"  style="background-color:bisque;">
+        {% for article in articles  %}
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse{{article.id}}" aria-expanded="false" aria-controls="collapseTwo">
+            {{article.title}} #{{article.id}} <a href="" style="color:{{article.author.last_name}};">by {{article.author}}</a>
+          </button>
+        </h5>
+      </div>
+      <div id="collapse{{article.id}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <p>{% if article.article_image %}
+            <img width="300" class="img-fluid rounded" src="{{article.article_image.url}}" alt="..." />
+            {% endif %}</p>
+          {{article.content|safe|truncatewords:3}}
+          <small><a href="{%url 'article:article' article.id %}">Go for More </a></small>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    
+</div>
+</div>
+
+{% else %}
+{% include "includes/not_found_article.html" %}
+
+{% endif %}
+{% endblock body %}
+
+
+
+
+

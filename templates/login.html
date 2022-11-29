@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+{% load crispy_forms_tags %}
+<!--https://django-crispy-forms.readthedocs.io/en/latest/install.html-->
+<!--https://github.com/googlearchive/code-prettify?ysclid=laobl0j2zb191972418-->
+<form class="col-md-6 offset-md-3" method="post">
+<br>
+<h1>Giriş Yap</h1>
+<hr>
+
+
+    {% csrf_token %}
+    {{form|crispy}}
+    <br>
+    <button type="submit" class="btn btn-danger">Giriş Yap</button>
+</form>
+
+{% endblock body %}

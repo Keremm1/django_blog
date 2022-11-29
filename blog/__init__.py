@@ -1,0 +1,1 @@
+#python'a bu klasörün bir modül olduğunu söyler, tüm modüller bu dosyaya sahip olmalıdır modül olabilmek için

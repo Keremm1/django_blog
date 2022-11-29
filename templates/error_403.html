@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+
+  <meta charset="UTF-8">
+  <title>403 PAGE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  
+      <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+  
+</head>
+ <body>
+    
+
+<div id="app">
+   {% block Message %} 
+   <div>403</div>
+    <div class="txt">
+     This is not your article<span class="blink">_</span>
+    </div>
+    {% endblock Message %}
+ </div>
+</body>
+</html>
