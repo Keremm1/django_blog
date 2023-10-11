@@ -1,2 +1,2 @@
 # django_blog
- Django blog with res_framework
+ Django blog with rest_framework
